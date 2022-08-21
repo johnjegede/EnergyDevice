@@ -12,7 +12,7 @@ class mainMenu
 public:
     mainMenu(QString);
     QString parentMenu;
-    vector<menuOptions > childOptions;
+    vector<menuOptions> childOptions;
 
     void setChildOptions(QString suboption, int minutes, int seconds);
     void setChildOptions(QString suboption, int minutes);

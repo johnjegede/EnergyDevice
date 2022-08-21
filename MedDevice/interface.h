@@ -26,9 +26,7 @@ class Interface: public QWidget
 
 public:
     Interface( QWidget *parent = nullptr,bool = false,bool = false,bool= true,bool= true,bool= false,bool= true,bool= false,bool = true,bool = false);//
-    ~Interface();
-    QListWidget* getSreen();
-    QListWidget* screenView;
+    ~Interface();   
     void showWindow();
     bool getDecreaseButtonSel();
     bool getIncreaseButtonSel();
@@ -36,7 +34,7 @@ public:
     bool getHistorySel();
     bool getBiofeedbackSel();
 
-
+     QListWidget* screenView;
     QPushButton* switchButton;
     QPushButton* selctButton;
     QPushButton* upButton;

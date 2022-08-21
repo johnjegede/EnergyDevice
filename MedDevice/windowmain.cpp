@@ -128,6 +128,7 @@ void windowmain::displayMenu(bool on,int level)
         {
             objTime = new QTime (0,min,sec,0);
             start = QTime::fromString(objTime->toString("mm:ss"),"mm:ss");
+            treatment = false;
 
             //Start timer if on skin
             if(userInterface->electrodeCheck->checkState() == 2 and treatment)
@@ -155,6 +156,7 @@ void windowmain::displayMenu(bool on,int level)
 
         if( next[subOption].menuOption == "VIEW")
         {
+            treatment = false;
             //Display the history of activities on the screen
             for(int i =0; i < (int)logHistory.size(); i++)
             {
@@ -167,7 +169,9 @@ void windowmain::displayMenu(bool on,int level)
             return;
         }
         else if (next[subOption].menuOption == "CLEAR" ) {
+            treatment = false;
             //Clear the history
+            previousPressed();
             logHistory.clear();
             return;
         }
@@ -273,6 +277,7 @@ void windowmain::decreaseBattery() {
     {
         userInterface->batteryLevel->setValue(0);
         displayMenu(false,0);
+        isOn = !isOn;
     }
     userInterface->batteryLevel->setValue(round(maxBatteryPerSecond));
 }
@@ -293,12 +298,10 @@ void windowmain::switchPressed()
     //Switch on or off the device
     level = 0;
     isOn = !isOn;
-    int batteryVal = userInterface->batterySlider->value();
+    int batteryVal = userInterface->batteryLevel->value();
     if(batteryVal > 0 )
     {
         displayMenu(isOn,level);
-    }else{
-        userInterface->screenView->addItem("Battery Low");
     }
 }
 

@@ -25,8 +25,6 @@ class InputForm : public QWidget
 public:
     InputForm(QWidget *parent = nullptr);
     QWidget *getwidget();
-    windowmain *win;
-    QVBoxLayout* rows;
 
 public slots:
     void dialogOkPressed();
@@ -52,7 +50,8 @@ private:
 
 
     Interface* mainVal;
-
+    windowmain *win;
+    QVBoxLayout* rows;
 
 };
 //! [class definition]
